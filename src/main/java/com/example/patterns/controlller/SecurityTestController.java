@@ -1,0 +1,24 @@
+package com.example.patterns.controlller;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/")
+public class SecurityTestController {
+
+
+    @GetMapping("test/request")
+    public String get(){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal());
+        System.out.println("Authorities are " + authentication.getAuthorities());
+
+        return "HELLO this request is secured";
+    }
+
+}

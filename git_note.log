@@ -1,0 +1,21 @@
+2024-06-15 13:48:40.496 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 2444 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:48:40.498 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:48:40.500 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:48:57.605 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 15424 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:48:57.609 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:48:57.610 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:50:05.625 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 2692 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:50:05.627 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:50:05.628 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:52:23.752 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 4412 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:52:23.755 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:52:23.756 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:53:48.980 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 17040 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:53:48.983 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:53:48.984 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:54:31.488 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 11356 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:54:31.491 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:54:31.493 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-15 13:57:35.281 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 19.0.1 with PID 4024 (C:\Users\saite\Desktop\patterns (1)\patterns\target\classes started by saite in C:\Users\saite\Desktop\patterns (1)\patterns)
+2024-06-15 13:57:35.284 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-15 13:57:35.286 INFO  c.e.patterns.PatternsApplication - No active profile set, falling back to 1 default profile: "default"

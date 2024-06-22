@@ -1,0 +1,18 @@
+2024-06-22 11:30:54.017 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 11:30:54.035 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:00:53.508 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:00:53.512 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:15:50.896 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:15:50.901 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:15:50.920 INFO  c.e.p.service.imp.LoginService - Saving User Details in DB for signing up
+2024-06-22 15:21:51.421 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:21:51.423 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:24:46.365 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:24:46.368 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:27:07.071 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:27:07.073 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:28:53.536 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:28:53.539 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:29:48.666 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
+2024-06-22 15:29:48.668 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
+2024-06-22 15:29:48.678 INFO  c.e.p.service.imp.LoginService - Saving User Details in DB for signing up
