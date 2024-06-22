@@ -130,7 +130,7 @@ public class LoginService implements ILoginService {
         // Validate that at least one identifier is provided
         boolean isIdentifierProvided = tbUsmUserAccessVo.getUserName() != null ||
                 tbUsmUserAccessVo.getEmail() != null ||
-                tbUsmUserAccessVo.getPhoneNumber() != null;
+                tbUsmUserAccessVo.getPhoneNumber() != null || tbUsmUserAccessVo.getUserName().length() > 5;
 
         if (!isIdentifierProvided) {
             return false;
