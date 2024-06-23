@@ -39,50 +39,6 @@ public class LoginService implements ILoginService {
             logger.error("Some fields may be empty, please check");
             throw new IllegalArgumentException("Required fields are missing/invalid");
         }
-        //making sure userName is of minimum length 5
-        if(tbUsmUserAccessVo.getUserName().length() < 5){
-            logger.error("UserName should be minimum of length 5");
-            throw new IllegalArgumentException("Required field length is too short");
-        }
-
-        //making sure password is strong enough
-        String password = tbUsmUserAccessVo.getPassword();
-        if (password == null) {
-            throw new IllegalArgumentException("Password cannot be null");
-        }
-        if (password.length() < 8) {
-            throw new IllegalArgumentException("Password must be at least 8 characters long");
-        }
-
-        boolean hasUppercase = false;
-        boolean hasLowercase = false;
-        boolean hasDigit = false;
-        boolean hasSpecialChar = false;
-
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                hasUppercase = true;
-            } else if (Character.isLowerCase(c)) {
-                hasLowercase = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            } else {
-                hasSpecialChar = true;
-            }
-        }
-
-        if (!hasUppercase) {
-            throw new IllegalArgumentException("Password must contain at least one uppercase letter");
-        }
-        if (!hasLowercase) {
-            throw new IllegalArgumentException("Password must contain at least one lowercase letter");
-        }
-        if (!hasDigit) {
-            throw new IllegalArgumentException("Password must contain at least one digit");
-        }
-        if (!hasSpecialChar) {
-            throw new IllegalArgumentException("Password must contain at least one special character");
-        }
 
 
         Optional<User> userOpt = findUserByIdentifier(tbUsmUserAccessVo);
@@ -176,6 +132,14 @@ public class LoginService implements ILoginService {
         boolean isIdentifierProvided = tbUsmUserAccessVo.getUserName() != null ||
                 tbUsmUserAccessVo.getEmail() != null ||
                 tbUsmUserAccessVo.getPhoneNumber() != null;
+
+        //making sure userName is of minimum length 5
+        if(tbUsmUserAccessVo.getUserName().length() < 5){
+            logger.error("UserName should be minimum of length 5");
+            throw new IllegalArgumentException("Required field length is too short");
+        }
+
+        //making sure password is strong enough
         //checking username is not empty.
         if(tbUsmUserAccessVo.getUserName().length() == 0){
             return false;
@@ -183,6 +147,44 @@ public class LoginService implements ILoginService {
         //checking password is also not empty.
         if(tbUsmUserAccessVo.getPassword().length() == 0){
             return false;
+        }
+
+        String password = tbUsmUserAccessVo.getPassword();
+        if (password == null) {
+            throw new IllegalArgumentException("Password cannot be null");
+        }
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("Password must be at least 8 characters long");
+        }
+
+        boolean hasUppercase = false;
+        boolean hasLowercase = false;
+        boolean hasDigit = false;
+        boolean hasSpecialChar = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUppercase = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLowercase = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else {
+                hasSpecialChar = true;
+            }
+        }
+
+        if (!hasUppercase) {
+            throw new IllegalArgumentException("Password must contain at least one uppercase letter");
+        }
+        if (!hasLowercase) {
+            throw new IllegalArgumentException("Password must contain at least one lowercase letter");
+        }
+        if (!hasDigit) {
+            throw new IllegalArgumentException("Password must contain at least one digit");
+        }
+        if (!hasSpecialChar) {
+            throw new IllegalArgumentException("Password must contain at least one special character");
         }
 
         if (!isIdentifierProvided) {
