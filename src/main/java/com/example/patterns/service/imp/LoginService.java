@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @Component
 public class LoginService implements ILoginService {
@@ -133,13 +134,6 @@ public class LoginService implements ILoginService {
                 tbUsmUserAccessVo.getEmail() != null ||
                 tbUsmUserAccessVo.getPhoneNumber() != null;
 
-        //making sure userName is of minimum length 5
-        if(tbUsmUserAccessVo.getUserName().length() < 5){
-            logger.error("UserName should be minimum of length 5");
-            throw new IllegalArgumentException("Required field length is too short");
-        }
-
-        //making sure password is strong enough
         //checking username is not empty.
         if(tbUsmUserAccessVo.getUserName().length() == 0){
             return false;
@@ -149,42 +143,39 @@ public class LoginService implements ILoginService {
             return false;
         }
 
-        String password = tbUsmUserAccessVo.getPassword();
-        if (password == null) {
-            throw new IllegalArgumentException("Password cannot be null");
+        //making sure userName is of minimum length 5
+        if(tbUsmUserAccessVo.getUserName().length() < 5){
+            logger.error("UserName should be minimum of length 5");
+            throw new IllegalArgumentException("Required field length is too short");
         }
-        if (password.length() < 8) {
+
+        //making sure password is strong enough
+        final Pattern UPPERCASE = Pattern.compile("[A-Z]");
+        final Pattern LOWERCASE = Pattern.compile("[a-z]");
+        final Pattern DIGIT = Pattern.compile("[0-9]");
+        final Pattern SPECIAL_CHAR = Pattern.compile("[^A-Za-z0-9]");
+        final Pattern COMMON_PASSWORDS = Pattern.compile(
+                "(?i)password|123456|123456789|qwerty|abc123|password1|111111|12345678|12345|1234567"
+        );
+
+        String password = tbUsmUserAccessVo.getPassword();
+        if (password == null || password.length() < 8) {
             throw new IllegalArgumentException("Password must be at least 8 characters long");
         }
-
-        boolean hasUppercase = false;
-        boolean hasLowercase = false;
-        boolean hasDigit = false;
-        boolean hasSpecialChar = false;
-
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                hasUppercase = true;
-            } else if (Character.isLowerCase(c)) {
-                hasLowercase = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            } else {
-                hasSpecialChar = true;
-            }
+        if (!UPPERCASE.matcher(password).find()) {
+            throw new IllegalArgumentException("Password must contain an uppercase character");
         }
-
-        if (!hasUppercase) {
-            throw new IllegalArgumentException("Password must contain at least one uppercase letter");
+        if (!LOWERCASE.matcher(password).find()) {
+            throw new IllegalArgumentException("Password must contain an lowercase character");
         }
-        if (!hasLowercase) {
-            throw new IllegalArgumentException("Password must contain at least one lowercase letter");
+        if (!DIGIT.matcher(password).find()) {
+            throw new IllegalArgumentException("Password must contain an digit character");
         }
-        if (!hasDigit) {
-            throw new IllegalArgumentException("Password must contain at least one digit");
+        if (!SPECIAL_CHAR.matcher(password).find()) {
+            throw new IllegalArgumentException("Password must contain an special character");
         }
-        if (!hasSpecialChar) {
-            throw new IllegalArgumentException("Password must contain at least one special character");
+        if (COMMON_PASSWORDS.matcher(password).find()) {
+            throw new IllegalArgumentException("Password is very common");
         }
 
         if (!isIdentifierProvided) {
