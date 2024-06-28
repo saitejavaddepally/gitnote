@@ -50,7 +50,7 @@ public class LoginService implements ILoginService {
         if (userOpt.isPresent()) {
             User currentUser = userOpt.get();
             if (!passwordEncoder.matches(tbUsmUserAccessVo.getPassword(), currentUser.getPassword())) {
-                logger.error("Invalid username or password for user: " + currentUser.getUsername());
+                logger.error("Invalid username or password for user: {}", currentUser.getUsername());
                 throw new UnauthorizedException("Invalid username or password");
             }
 
@@ -59,6 +59,10 @@ public class LoginService implements ILoginService {
             customUserDetailsResponse.setToken("Bearer " + token);
 
         } else {
+
+            // validate password here
+            ValidationUtils.doSignUpPasswordValidation(tbUsmUserAccessVo.getPassword());
+
             User newUser = saveUserDetailsInDB(tbUsmUserAccessVo)   ;
             String token = jwtService.generateToken(newUser.getUsername());
 

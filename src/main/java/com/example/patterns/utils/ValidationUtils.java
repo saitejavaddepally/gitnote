@@ -1,6 +1,7 @@
 package com.example.patterns.utils;
 
 import com.example.patterns.vo.auth.TbUsmUserAccessVo;
+import io.micrometer.common.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -26,17 +27,17 @@ public class ValidationUtils {
         }
 
         // Validate that at least one identifier is provided
-        boolean isIdentifierProvided = tbUsmUserAccessVo.getUserName() != null ||
-                tbUsmUserAccessVo.getEmail() != null ||
-                tbUsmUserAccessVo.getPhoneNumber() != null;
+        boolean isIdentifierProvided = StringUtils.isNotEmpty(tbUsmUserAccessVo.getUserName()) ||
+                StringUtils.isNotEmpty(tbUsmUserAccessVo.getEmail()) ||
+                StringUtils.isNotEmpty(tbUsmUserAccessVo.getPhoneNumber());
 
         // Checking username is not empty
-        if (tbUsmUserAccessVo.getUserName().length() == 0) {
+        if (!isIdentifierProvided) {
             return false;
         }
 
         // Checking password is also not empty
-        if (tbUsmUserAccessVo.getPassword().length() == 0) {
+        if (StringUtils.isEmpty(tbUsmUserAccessVo.getPassword())) {
             return false;
         }
 
@@ -46,24 +47,6 @@ public class ValidationUtils {
             throw new IllegalArgumentException("Required field length is too short");
         }
 
-        // Making sure password is strong enough
-        String password = tbUsmUserAccessVo.getPassword();
-        if (password == null || password.length() < 8 ||
-                !UPPERCASE.matcher(password).find() ||
-                !LOWERCASE.matcher(password).find() ||
-                !DIGIT.matcher(password).find() ||
-                !SPECIAL_CHAR.matcher(password).find()) {
-
-            throw new IllegalArgumentException("Password must be at least 8 characters long and include an uppercase character, a lowercase character, a digit, and a special character. Example: Passw0rd!");
-        }
-
-        if (COMMON_PASSWORDS.matcher(password).find()) {
-            throw new IllegalArgumentException("Password is very common");
-        }
-
-        if (!isIdentifierProvided) {
-            return false;
-        }
 
         // Validate email format if provided
         if (tbUsmUserAccessVo.getEmail() != null && !isValidEmail(tbUsmUserAccessVo.getEmail())) {
@@ -85,6 +68,26 @@ public class ValidationUtils {
         }
 
         return true;
+    }
+
+
+    public static boolean doSignUpPasswordValidation(String password){
+        // Making sure password is strong enough
+        if (password.length() < 8 ||
+                !UPPERCASE.matcher(password).find() ||
+                !LOWERCASE.matcher(password).find() ||
+                !DIGIT.matcher(password).find() ||
+                !SPECIAL_CHAR.matcher(password).find()) {
+
+            throw new IllegalArgumentException("Password must be at least 8 characters long and include an uppercase character, a lowercase character, a digit, and a special character. Example: Passw0rd!");
+        }
+
+        if (COMMON_PASSWORDS.matcher(password).find()) {
+            throw new IllegalArgumentException("Password is very common");
+        }
+
+        return true;
+
     }
 
     private static boolean isValidEmail(String email) {
