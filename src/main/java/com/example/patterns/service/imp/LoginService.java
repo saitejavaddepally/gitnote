@@ -7,6 +7,7 @@ import com.example.patterns.repository.UserRepository;
 import com.example.patterns.security.jwt.JwtService;
 import com.example.patterns.service.ILoginService;
 import com.example.patterns.utils.ApplicationConstants;
+import com.example.patterns.utils.ValidationUtils;
 import com.example.patterns.vo.auth.TbUsmUserAccessVo;
 import com.example.patterns.vo.auth.CustomUserDetails;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @Component
 public class LoginService implements ILoginService {
@@ -33,12 +35,14 @@ public class LoginService implements ILoginService {
     @Autowired
     private JwtService jwtService;
 
+
     @Override
     public CustomUserDetails authenticateUser(TbUsmUserAccessVo tbUsmUserAccessVo) {
-        if (!initialValidationPass(tbUsmUserAccessVo)) {
+        if (!ValidationUtils.initialValidationPass(tbUsmUserAccessVo)) {
             logger.error("Some fields may be empty, please check");
             throw new IllegalArgumentException("Required fields are missing/invalid");
         }
+
 
         Optional<User> userOpt = findUserByIdentifier(tbUsmUserAccessVo);
         CustomUserDetails customUserDetailsResponse = new CustomUserDetails();
@@ -121,56 +125,4 @@ public class LoginService implements ILoginService {
         customUserDetailsResponse.setToken("Bearer " + token);
         return customUserDetailsResponse;
     }
-
-    private boolean initialValidationPass(TbUsmUserAccessVo tbUsmUserAccessVo) {
-        if (tbUsmUserAccessVo == null) {
-            return false;
-        }
-
-        // Validate that at least one identifier is provided
-        boolean isIdentifierProvided = tbUsmUserAccessVo.getUserName() != null ||
-                tbUsmUserAccessVo.getEmail() != null ||
-                tbUsmUserAccessVo.getPhoneNumber() != null;
-
-        if (!isIdentifierProvided) {
-            return false;
-        }
-
-        // Validate the password is not null
-        if (tbUsmUserAccessVo.getPassword() == null) {
-            return false;
-        }
-
-        // Validate email format if provided
-        if (tbUsmUserAccessVo.getEmail() != null && !isValidEmail(tbUsmUserAccessVo.getEmail())) {
-            return false;
-        }
-
-        // Validate phone number format if provided
-        if (tbUsmUserAccessVo.getPhoneNumber() != null && !isValidPhoneNumber(tbUsmUserAccessVo.getPhoneNumber())) {
-            return false;
-        }
-
-        // Validate roles
-        Set<String> validRoles = Set.of("MAKER", "CHECKER", "MAKER_CHECKER", "ENQUIRY");
-        String[] roles = tbUsmUserAccessVo.getRoles().split(ApplicationConstants.UNDERSCORE_DELIMITER);
-        for (String role : roles) {
-            if (!validRoles.contains(role.trim())) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = ApplicationConstants.EMAIL_REGEX;
-        return email.matches(emailRegex);
-    }
-
-    private boolean isValidPhoneNumber(String phoneNumber) {
-        String phoneRegex = ApplicationConstants.PHONE_NUMBER_REGEX;
-        return phoneNumber.matches(phoneRegex);
-    }
-
 }
