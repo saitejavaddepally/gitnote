@@ -18,6 +18,7 @@ import java.util.HashSet;
 @ToString
 public class CustomUserDetails implements UserDetails {
 
+    @Getter
     @JsonIgnore
     User user;
     String errorCode;
@@ -49,7 +50,4 @@ public class CustomUserDetails implements UserDetails {
         return user.getUsername();
     }
 
-    public User getUser(){
-        return null;
-    }
 }

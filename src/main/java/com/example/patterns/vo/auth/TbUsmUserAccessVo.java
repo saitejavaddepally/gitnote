@@ -17,4 +17,5 @@ public class TbUsmUserAccessVo {
     String email;
     String phoneNumber;
     String roles;
+    String profilePictureLink;
 }
