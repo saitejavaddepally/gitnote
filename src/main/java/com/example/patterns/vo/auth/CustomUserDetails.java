@@ -29,14 +29,13 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String roles = user.getRoles();
 
-        System.out.println("roles are .. " + roles);
         String[] rolesGranted = roles.split(ApplicationConstants.UNDERSCORE_DELIMITER);
         Collection<SimpleGrantedAuthority> simpleGrantedAuthorities = new HashSet<>();
 
         for (String role : rolesGranted) {
             simpleGrantedAuthorities.add(new SimpleGrantedAuthority(role));
         }
-        System.out.println("Simple Grant authorities are " + simpleGrantedAuthorities);
+
         return simpleGrantedAuthorities;
     }
 

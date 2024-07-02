@@ -35,15 +35,9 @@ public class ArticlePostController {
         logger.info("Current Authorities of the user are >> {}", principal.getAuthorities());
         logger.info("Article Saving process initiated ...");
 
-        try {
-            iArticlePostService.saveArticleForUser(tbWfwUserArticleVo, principal);
-        } catch (Exception e) {
-            logger.error(ExceptionUtils.getStackTrace(e));
-            throw new Exception("Issue at our end .. we'll fix it son");
-        }
+        iArticlePostService.saveArticleForUser(tbWfwUserArticleVo, principal);
 
         logger.info("Article Saving process completed ...");
-        // store the details in the DB with proper username
     }
 
 }
