@@ -6,5 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface IArticlePostService {
-    public void saveArticleForUser(TbWfwUserArticleVo tbWfwUserArticleVo, CustomUserDetails principal);
+    public void saveArticleForUser(TbWfwUserArticleVo tbWfwUserArticleVo, CustomUserDetails principal) throws Exception;
 }

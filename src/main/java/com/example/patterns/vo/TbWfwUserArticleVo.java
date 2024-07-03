@@ -16,6 +16,7 @@ public class TbWfwUserArticleVo {
     String approvedBy;
     List<String> imageLinks;
     String actionType;
+    String previousUserArticleId;
 
 
 }

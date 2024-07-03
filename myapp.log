@@ -1,18 +1,6 @@
-2024-06-22 11:30:54.017 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 11:30:54.035 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:00:53.508 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:00:53.512 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:15:50.896 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:15:50.901 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:15:50.920 INFO  c.e.p.service.imp.LoginService - Saving User Details in DB for signing up
-2024-06-22 15:21:51.421 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:21:51.423 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:24:46.365 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:24:46.368 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:27:07.071 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:27:07.073 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:28:53.536 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:28:53.539 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:29:48.666 WARN  c.e.p.security.jwt.JwtRequestFilter - JWT Token does not begin with Bearer String
-2024-06-22 15:29:48.668 INFO  c.e.p.controlller.LoginController - Application sign up process started ..
-2024-06-22 15:29:48.678 INFO  c.e.p.service.imp.LoginService - Saving User Details in DB for signing up
+2024-07-03 21:11:45.801 INFO  c.e.patterns.PatternsApplication - Starting PatternsApplication using Java 17.0.11 with PID 31009 (/Users/saiteja/Desktop/projects/gitnote/target/classes started by saiteja in /Users/saiteja/Desktop/projects/gitnote)
+2024-07-03 21:11:45.807 DEBUG c.e.patterns.PatternsApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-07-03 21:11:45.807 INFO  c.e.patterns.PatternsApplication - The following 1 profile is active: "default"
+2024-07-03 21:11:48.192 DEBUG c.e.p.security.jwt.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2024-07-03 21:11:48.520 INFO  c.e.patterns.PatternsApplication - Started PatternsApplication in 3.024 seconds (process running for 3.251)
+2024-07-03 21:11:48.521 INFO  c.e.patterns.PatternsApplication - PatternsApplication started successfully

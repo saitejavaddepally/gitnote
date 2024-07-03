@@ -40,4 +40,17 @@ public class ArticlePostController {
         logger.info("Article Saving process completed ...");
     }
 
+
+    @PostMapping("/modify/article")
+    public void modifyArticle(@RequestBody TbWfwUserArticleVo tbWfwUserArticleVo, @AuthenticationPrincipal CustomUserDetails principal) throws Exception {
+
+        // don't really need to check if the user is maker or checker -- just make the request
+
+        logger.info("Article Modify process initiated ...");
+
+        iArticlePostService.saveArticleForUser(tbWfwUserArticleVo, principal);
+
+        logger.info("Article Saving Modify process completed ...");
+    }
+
 }

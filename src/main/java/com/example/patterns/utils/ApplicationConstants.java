@@ -12,4 +12,5 @@ public class ApplicationConstants {
     public static final String MAKER = "MAKER";
     public static final String CHECKER = "CHECKER";
     public static final String ENQUIRY = "ENQUIRY";
+    public static final String MODIFY_ARTICLE = "MODIFY_ARTICLE";
 }
