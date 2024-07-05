@@ -55,8 +55,7 @@ public class ArticlePostService implements IArticlePostService {
                 // copy properties of csm to wfw
                 BeanUtils.copyProperties(tbCsmUserArticleVo.get(), tbWfwUserArticleModel);
 
-                // save wfw details to db again but with new article id
-                // later if approved copy make csm isActive to 0 and copy properties of wfw to csm again
+                tbWfwUserArticle.setActionType(ApplicationConstants.MODIFY_ARTICLE);
             }
 
             adaptAndSaveArticle(tbWfwUserArticleModel, tbWfwUserArticle, principal);
@@ -72,7 +71,7 @@ public class ArticlePostService implements IArticlePostService {
         tbWfwUserArticleVo.setUserIdMapping(String.valueOf(principal.getUser().getId()));
         tbWfwUserArticleVo.setIsArticleApproved(ApplicationConstants.NO);
         tbWfwUserArticleVo.setImageLinks(tbWfwUserArticle.getImageLinks());
-        tbWfwUserArticleVo.setActionType(ApplicationConstants.ADD_ARTICLE);
+        tbWfwUserArticleVo.setActionType(tbWfwUserArticle.getActionType());
         tbWfwUserArticleVo.setCreatedBy(principal.getUsername());
         tbWfwUserArticleVo.setApprovedBy("NONE");
         articleRepositoryWfw.save(tbWfwUserArticleVo);
