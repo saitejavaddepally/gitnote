@@ -15,7 +15,8 @@ public class TbWfwUserArticleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Assuming you have an ID field
+    @Column(name = "article_id", nullable = false)
+    private Long articleId; // Assuming you have an ID field
 
     @Column(name = "article_content", columnDefinition = "TEXT")
     private String articleContent;
@@ -29,9 +30,7 @@ public class TbWfwUserArticleModel {
     @Column(name = "approved_by")
     private String approvedBy;
 
-    @ElementCollection
-    @CollectionTable(name = "article_image_links", joinColumns = @JoinColumn(name = "article_id"))
-    @Column(name = "image_link")
+    @Column(name = "image_links")
     private List<String> imageLinks;
 
     @Column(name = "action_type")

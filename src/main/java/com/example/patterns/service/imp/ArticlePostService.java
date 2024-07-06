@@ -44,7 +44,7 @@ public class ArticlePostService implements IArticlePostService {
 
         if(hasRole(ApplicationConstants.MAKER, principal)){
 
-            if(tbWfwUserArticle.getActionType().equalsIgnoreCase(ApplicationConstants.MODIFY_ARTICLE)){
+            if(tbWfwUserArticle.getActionType() != null && tbWfwUserArticle.getActionType().equalsIgnoreCase(ApplicationConstants.MODIFY_ARTICLE)){
 
                 // get csm user + Article details
                 Optional<TbCsmUserArticleModel> tbCsmUserArticleVo = articleRepositoryCsm.findById(Integer.parseInt(tbWfwUserArticle.getPreviousUserArticleId()));
@@ -56,6 +56,10 @@ public class ArticlePostService implements IArticlePostService {
                 BeanUtils.copyProperties(tbCsmUserArticleVo.get(), tbWfwUserArticleModel);
 
                 tbWfwUserArticle.setActionType(ApplicationConstants.MODIFY_ARTICLE);
+                tbWfwUserArticleModel.setArticleId(null);
+            }
+            else{
+                tbWfwUserArticle.setActionType(ApplicationConstants.ADD_ARTICLE);
             }
 
             adaptAndSaveArticle(tbWfwUserArticleModel, tbWfwUserArticle, principal);

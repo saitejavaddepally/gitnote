@@ -36,7 +36,7 @@ public class ArticleApproveService implements IArticleApproveService {
 
         TbCsmUserArticleModel tbCsmUserArticleModel = new TbCsmUserArticleModel();
 
-        Optional<TbWfwUserArticleModel> articleVoOptional = articleRepositoryWfw.findById(Integer.parseInt(approveRejectReqVo.getArticleId()));
+        Optional<TbWfwUserArticleModel> articleVoOptional = articleRepositoryWfw.findById(Long.valueOf(approveRejectReqVo.getArticleId()));
 
         if(articleVoOptional.isEmpty()){
             logger.info("Unable to find the article that needs to be thrown");
@@ -49,13 +49,14 @@ public class ArticleApproveService implements IArticleApproveService {
         // move to csm and set status of isApproved to "YES"
         BeanUtils.copyProperties(tbWfwUserArticleModel, tbCsmUserArticleModel);
 
-        // save the details in db the details approved..
+        // save the details in db the details approved . .
         logger.info("Model after copy is {}", tbCsmUserArticleModel);
-        tbCsmUserArticleModel.setIsArticleApproved("YES");
+
+        tbCsmUserArticleModel.setIsArticleApproved("Y");
 
         articleRepositoryCsm.save(tbCsmUserArticleModel);
 
-        articleRepositoryWfw.updateTbWfwUserArticle("YES", articleVoOptional.get().getId().toString());
+        articleRepositoryWfw.updateTbWfwUserArticle(articleVoOptional.get().getArticleId());
 
 
     }
