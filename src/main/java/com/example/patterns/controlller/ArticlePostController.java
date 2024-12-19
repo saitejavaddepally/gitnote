@@ -53,4 +53,11 @@ public class ArticlePostController {
         logger.info("Article Saving Modify process completed ...");
     }
 
+    @PostMapping("/checker/inbox")
+    public void deleteArticle(){
+
+        logger.info("Delete Article process initiated .... ");
+
+    }
+
 }

@@ -1,15 +1,8 @@
 package com.example.patterns.vo.auth;
 
+import lombok.*;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
+@Data
 public class TbUsmUserAccessVo {
     String userName;
     String password;
