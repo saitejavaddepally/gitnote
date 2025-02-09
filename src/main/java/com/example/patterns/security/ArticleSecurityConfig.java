@@ -33,6 +33,7 @@ public class ArticleSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/authenticate/**").permitAll()
                         .requestMatchers("/frontpage/**").permitAll()
+                        .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception ->

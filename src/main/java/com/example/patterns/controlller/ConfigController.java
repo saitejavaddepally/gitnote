@@ -14,10 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfigController {
     private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
+    String test = "";
 
     @GetMapping("/hello")
     public String get(){
         logger.info("Hello world of application .... ... ... ");
+
+        System.out.println("Current value of test is " + test);
+
+        test = "Hello";
+
         return "This is the front page !!";
     }
 }
